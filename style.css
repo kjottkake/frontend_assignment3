@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+
+* {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.container {
+    min-height: 900px;
+    border: 1px solid red;
+    display: flex;
+}
+
+.todo {
+    background-color: lightsalmon;
+    order: 1;
+    padding: 100px;
+}
+
+.completed {
+    background-color: aquamarine;
+    order: 2;
+    padding: 100px;
+}
+
+.list {
+    border: 1px solid red;
+}
+
+.input {
+    border: 1px solid red;
+}
+
+.finished li {
+    text-decoration: line-through;
+}
