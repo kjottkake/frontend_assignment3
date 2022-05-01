@@ -1,20 +1,24 @@
-let form = document.querySelectorAll(".task");
-let testli = document.querySelector("#testLi");
-let testp = document.querySelector("#testp");
+let form = document.getElementById("addItem");
+let data = document.getElementById("task");
 
-//Create a array of all items currently in list.
-let currentList = ["Walk dog", "Sleep"];
+let tasks = ["Walk Cat", "Walk Dog", "Walk Emu"]
 
-/*Function for getting data from Form*/
+
+/* Adds task to array function */
+let addTask = () =>{
+    tasks.push(getData());
+    console.log(tasks);
+}
+
+
+/* Gets Data from FORM */
 let getData = () => {
-  let dataValue = newTask.value;
-  console.log("inpuuted data: " + dataValue);
+    let newTask = data.value;
+    console.log("Data Value: " + newTask);
+    return newTask;
 }
 
-testli.innerHTML = currentList[1];
-function test() {
-testp.innerHTML = "lol this is a test!";
-}
+/* Calls on eventListener for click event */
+form.addEventListener("click", addTask)
 
-test();
 
