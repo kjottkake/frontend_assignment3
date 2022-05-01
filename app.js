@@ -1,5 +1,8 @@
-let form = document.getElementById("addItem");
-let data = document.getElementById("task");
+/*Selects various dom elements*/
+let form = document.querySelector("#addItem");
+let data = document.querySelector("#task");
+let testli = document.querySelector("#testli"); 
+
 
 let tasks = ["Walk Cat", "Walk Dog", "Walk Emu"]
 
@@ -9,6 +12,16 @@ let addTask = () =>{
     tasks.push(getData());
     console.log(tasks);
 }
+
+
+
+/*Need to create a new element using createElement */
+let addElement = () => {
+  console.log("addElement function functional");
+}
+
+
+
 
 
 /* Gets Data from FORM */
@@ -21,4 +34,5 @@ let getData = () => {
 /* Calls on eventListener for click event */
 form.addEventListener("click", addTask)
 
+testli.innerHTML = "ASDFASDAFSDFAD";
 
