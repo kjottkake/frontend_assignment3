@@ -22,7 +22,7 @@ let data = document.querySelector("#task");
 let testli = document.querySelector("#testli"); 
 
 
-let tasks = ["Walk Cat", "Walk Dog", "Walk Emu"]
+let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beers", "Lift some weights or something"]
 
 
 /* Adds task to array function */
