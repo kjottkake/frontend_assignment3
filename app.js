@@ -1,3 +1,21 @@
+/*TODO: 
+  [x]How to use foreach
+  [x]Add new elements to html using javascript
+  []Array functionalities
+    []Add
+    []Delete
+    []Edit
+  []Delete Items
+  []Update Items
+      []Confirm
+      []Cancel
+  []Add Item
+*/
+
+
+
+
+
 /*Selects various dom elements*/
 let form = document.querySelector("#addItem");
 let data = document.querySelector("#task");
@@ -14,6 +32,22 @@ let addTask = () =>{
 }
 
 
+//Creates elements from array
+let populateList = (t) =>{
+  const newLi = document.createElement("li");
+  const newLiContent = document.createTextNode(t);
+  newLi.appendChild(newLiContent);
+
+  const currentDiv = document.getElementById("ulthingie");
+  //adds element
+  currentDiv.append(newLi);
+}
+
+// let items = ["item1", "item2", "item3"]
+
+
+tasks.forEach(populateList);
+
 
 /*Need to create a new element using createElement */
 let addElement = () => {
@@ -22,7 +56,7 @@ let addElement = () => {
   const newContent = document.createTextNode("Hi, How are ya!");
   newInput.appendChild(newContent);
 
-  const currentDiv = document.getElementById("ulthingie");\
+  const currentDiv = document.getElementById("ulthingie");
   //adds element
   currentDiv.append(newInput);
 }
