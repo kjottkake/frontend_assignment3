@@ -18,6 +18,13 @@ let addTask = () =>{
 /*Need to create a new element using createElement */
 let addElement = () => {
   console.log("addElement function functional");
+  const newInput = document.createElement("li");
+  const newContent = document.createTextNode("Hi, How are ya!");
+  newInput.appendChild(newContent);
+
+  const currentDiv = document.getElementById("ulthingie");\
+  //adds element
+  currentDiv.append(newInput);
 }
 
 
