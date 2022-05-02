@@ -38,6 +38,9 @@ let populateList = (t) =>{
   const newLiContent = document.createTextNode(t);
   newLi.appendChild(newLiContent);
 
+  const button = document.createElement("button");
+  newLi.appendChild(button);
+
   const currentDiv = document.getElementById("ulthingie");
   //adds element
   currentDiv.append(newLi);
@@ -69,6 +72,7 @@ let addElement = () => {
 let getData = () => {
     let newTask = data.value;
     console.log("Data Value: " + newTask);
+    // populateList();
     return newTask;
 }
 
