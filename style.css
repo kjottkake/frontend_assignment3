@@ -4,6 +4,9 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+body {
+    background-color: #141414;
+}
 
 .container {
     min-height: 900px;

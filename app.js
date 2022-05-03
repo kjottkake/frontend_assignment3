@@ -1,6 +1,9 @@
 /*TODO: 
   [x]How to use foreach
-  [x]Add new elements to html using javascript
+  []Add new elements to html using javascript
+    []Add Buttons
+    [x]Add new text
+    []add button functionality
   []Array functionalities
     []Add
     []Delete
@@ -38,6 +41,7 @@ let populateList = (t) =>{
   const newLiContent = document.createTextNode(t);
   newLi.appendChild(newLiContent);
 
+  //creating new button
   const button = document.createElement("button");
   newLi.appendChild(button);
 
