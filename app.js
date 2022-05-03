@@ -39,16 +39,22 @@ let addTask = () =>{
 let populateList = (t) =>{
   const newLi = document.createElement("li");
   const newLiContent = document.createTextNode(t);
+  const checkBox = document.createElement("input");
+
+
   newLi.appendChild(newLiContent);
 
   //creating new button
   const button = document.createElement("button");
 
+  checkBox.type = "checkBox";
+
   button.innerText = "Editbra!";
   button.className = "edit";
 
   newLi.appendChild(button);
-
+  newLi.appendChild(checkBox);
+  
   const currentDiv = document.getElementById("ulthingie");
   //adds element
   currentDiv.append(newLi);
