@@ -43,6 +43,10 @@ let populateList = (t) =>{
 
   //creating new button
   const button = document.createElement("button");
+
+  button.innerText = "Editbra!";
+  button.className = "edit";
+
   newLi.appendChild(button);
 
   const currentDiv = document.getElementById("ulthingie");
