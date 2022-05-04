@@ -129,8 +129,8 @@ let deleteItem = (e) => {
 let editItem = (e) =>{
   console.log("You clicked on the edit button!");
   editforms.classList.remove('hidden');
-  // enters.classList.remove('hidden');
-  // cancels.classList.remove('hidden');
+  enters.classList.remove('hidden');
+  cancels.classList.remove('hidden');
   // let target = e.target;
   // console.log("e.target" + target);
 }
