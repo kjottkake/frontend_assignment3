@@ -85,9 +85,24 @@ let addElement = () => {
 }
 
 
+
+function getTarget(e) {                          // Declare function
+  if (!e) {                                      // If there is no event object
+    e = window.event;                            // Use old IE event object
+  }
+  return e.target || e.srcElement;               // Get the target of event
+}
+
+
+
 /*Delete item */
 let deleteItem = () => {
   console.log("You clicked on the delete button!");
+  console.log(this.parentNode);
+  //when the button is clicked, then the element is removed from the screen...and eventually the array
+  let listItem = this.parentNode;
+  let  ul = listItem.parentNode;
+  ul.removeChild(listItem);
 }
 
 
