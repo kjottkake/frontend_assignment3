@@ -27,7 +27,17 @@
 let form = document.querySelector("#addItem");
 let data = document.querySelector("#task");
 let testli = document.querySelector("#testli");
-let removes = document.querySelectorAll(".delete");
+
+//why do these not fucking work?
+// let removes = document.querySelectorAll("button.delete");
+let removes = document.querySelector("button.delete");
+let edit = document.querySelector("button.edit"); 
+let fuck = document.querySelector("button.fuckyou");
+
+
+let editforms = document.querySelectorAll(".editForms");
+let enters = document.querySelectorAll(".enter");
+let cancels = document.querySelectorAll(".cancel");
 
 let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beers", "Lift some weights or something"]
 let tasksFinished = [];
@@ -49,7 +59,7 @@ let addTask = () => {
 
   //sets element attributes
   checkBox.type = "checkBox";
-  button.innerText = "Editbra!";
+  button.innerText = "Edit";
   button.className = "edit";
   deleteButton.innerText = "Delete";
   deleteButton.className = "delete";
@@ -103,13 +113,23 @@ let addTask = () => {
 
 
 /*Delete item */
-let deleteItem = () => {
+let deleteItem = (e) => {
   console.log("You clicked on the delete button!");
-  console.log(this.parentNode);
+  console.log("e.target: " + e.target);
   //when the button is clicked, then the element is removed from the screen...and eventually the array
-  let listItem = this.parentNode;
+  let listItem = e.target;
   let ul = listItem.parentNode;
-  ul.removeChild(listItem);
+  ul.remove();
+  return 0;
+}
+
+
+/*Edit Item*/
+let editItem = () =>{
+  console.log("You clicked on the edit button!");
+  editforms.classList.remove('hidden');
+  enters.classList.remove('hidden');
+  cancels.classList.remove('hidden');
 }
 
 
@@ -117,10 +137,21 @@ let deleteItem = () => {
 form.addEventListener("click", addTask)
 
 /*Needs to put the remove in a loop as there are multiple objects that are not loaded based on the DOM or something like that.*/
-for (const remove of removes) {
-  remove.addEventListener("click", deleteItem)
-}
-
+// for (const remove of removes) {
+//   remove.addEventListener("click", deleteItem(e))
+// }
+removes.addEventListener("click", function (e){
+  deleteItem(e);
+})
 
 testli.innerHTML = "ASDFASDAFSDFAD";
 
+
+fuck.addEventListener("click", function fuckYou(){
+  console.log("fucking hell");
+})
+
+
+
+
+edit.addEventListener("click", editItem)

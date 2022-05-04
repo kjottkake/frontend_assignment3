@@ -37,3 +37,16 @@ body {
 .finished li {
     text-decoration: line-through;
 }
+
+
+.editForm.hidden {
+    display: none;
+}
+
+.enter.hidden {
+    display: none;
+}
+
+.cancel.hidden {
+    display: none;  
+}
