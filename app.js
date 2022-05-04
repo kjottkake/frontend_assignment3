@@ -13,6 +13,7 @@
     []Delete
     []Edit
   []Delete Items
+    [x]Delete 1 item
   []Update Items
       []Confirm
       []Cancel
@@ -35,9 +36,9 @@ let edit = document.querySelector("button.edit");
 let fuck = document.querySelector("button.fuckyou");
 
 
-let editforms = document.querySelectorAll(".editForms");
-let enters = document.querySelectorAll(".enter");
-let cancels = document.querySelectorAll(".cancel");
+let editforms = document.querySelector("input.editForm");
+let enters = document.querySelector("button.enter");
+let cancels = document.querySelector("button.cancel");
 
 let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beers", "Lift some weights or something"]
 let tasksFinished = [];
@@ -117,19 +118,21 @@ let deleteItem = (e) => {
   console.log("You clicked on the delete button!");
   console.log("e.target: " + e.target);
   //when the button is clicked, then the element is removed from the screen...and eventually the array
-  let listItem = e.target;
-  let ul = listItem.parentNode;
-  ul.remove();
+  let target = e.target;
+  listItem  = target.parentNode;
+  listItem.remove();
   return 0;
 }
 
 
 /*Edit Item*/
-let editItem = () =>{
+let editItem = (e) =>{
   console.log("You clicked on the edit button!");
   editforms.classList.remove('hidden');
-  enters.classList.remove('hidden');
-  cancels.classList.remove('hidden');
+  // enters.classList.remove('hidden');
+  // cancels.classList.remove('hidden');
+  // let target = e.target;
+  // console.log("e.target" + target);
 }
 
 
@@ -154,4 +157,7 @@ fuck.addEventListener("click", function fuckYou(){
 
 
 
-edit.addEventListener("click", editItem)
+// edit.addEventListener("click", editItem)
+edit.addEventListener("click", function (e){
+  editItem(e);
+})
