@@ -19,6 +19,7 @@
   []Add Item
     [x]Adds item
     []Add on enter
+    [x]Clears field
 */
 
 
@@ -33,11 +34,12 @@ let tasksFinished = [];
 
 /* Adds task to array function */
 let addTask = () => {
-
+  //getting value from data
   let newTask = data.value;
   tasks.push(newTask);
   console.log(tasks);
 
+  //creating html elements
   const newLi = document.createElement("li");
   const newLiContent = document.createTextNode(newTask);
   const checkBox = document.createElement("input");
@@ -63,9 +65,10 @@ let addTask = () => {
   //adds element
   currentDiv.append(newLi);
   // populateList(tasks);
+
+  //resets form field to empty
   data.value = '';
 }
-
 
 //Creates elements from array
 // let populateList = (t) => {
@@ -99,30 +102,6 @@ let addTask = () => {
 // tasks.forEach(populateList);
 
 
-
-/*Need to create a new element using createElement */
-let addElement = () => {
-  console.log("addElement function functional");
-  const newInput = document.createElement("li");
-  const newContent = document.createTextNode("Hi, How are ya!");
-  newInput.appendChild(newContent);
-
-  const currentDiv = document.getElementById("ulthingie");
-  //adds element
-  currentDiv.append(newInput);
-}
-
-
-
-function getTarget(e) {                          // Declare function
-  if (!e) {                                      // If there is no event object
-    e = window.event;                            // Use old IE event object
-  }
-  return e.target || e.srcElement;               // Get the target of event
-}
-
-
-
 /*Delete item */
 let deleteItem = () => {
   console.log("You clicked on the delete button!");
@@ -133,16 +112,6 @@ let deleteItem = () => {
   ul.removeChild(listItem);
 }
 
-
-
-
-/* Gets Data from FORM */
-// let getData = () => {
-//   let newTask = data.value;
-//   console.log("Data Value: " + newTask);
-//   // populateList();
-//   return newTask;
-// }
 
 /* Calls on eventListener for click event */
 form.addEventListener("click", addTask)
