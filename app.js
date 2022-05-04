@@ -62,7 +62,7 @@ let addTask = () => {
   const currentDiv = document.getElementById("ulthingie");
   //adds element
   currentDiv.append(newLi);
-
+  // populateList(tasks);
 }
 
 
