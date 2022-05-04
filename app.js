@@ -14,9 +14,11 @@
     []Edit
   []Delete Items
     [x]Delete 1 item
-  []Update Items
-      []Confirm
+  []Update/Edit Items
+      []Enter
+        []Confirm
       []Cancel
+        []Confirm
   []Add Item
     [x]Adds item
     []Add on enter
