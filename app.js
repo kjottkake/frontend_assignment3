@@ -32,8 +32,10 @@ let data = document.querySelector("#task");
 let testli = document.querySelector("#testli");
 
 //why do these not fucking work?
+
+//The variables need to be changed into arrays
 // let removes = document.querySelectorAll("button.delete");
-let removes = document.querySelector("button.delete");
+let removes = document.querySelectorAll("button.delete");
 let edit = document.querySelector("button.edit"); 
 
 let editforms = document.querySelector("input.editForm");
@@ -141,9 +143,11 @@ form.addEventListener("click", addTask)
 // for (const remove of removes) {
 //   remove.addEventListener("click", deleteItem(e))
 // }
-removes.addEventListener("click", function (e){
+for (let i = 0; i < removes.length; i++){
+removes[i].addEventListener("click", function (e){
   deleteItem(e);
-})
+});
+}
 
 testli.innerHTML = "ASDFASDAFSDFAD";
 
