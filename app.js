@@ -35,8 +35,6 @@ let testli = document.querySelector("#testli");
 // let removes = document.querySelectorAll("button.delete");
 let removes = document.querySelector("button.delete");
 let edit = document.querySelector("button.edit"); 
-let fuck = document.querySelector("button.fuckyou");
-
 
 let editforms = document.querySelector("input.editForm");
 let enters = document.querySelector("button.enter");
@@ -133,8 +131,6 @@ let editItem = (e) =>{
   editforms.classList.remove('hidden');
   enters.classList.remove('hidden');
   cancels.classList.remove('hidden');
-  // let target = e.target;
-  // console.log("e.target" + target);
 }
 
 
@@ -150,14 +146,6 @@ removes.addEventListener("click", function (e){
 })
 
 testli.innerHTML = "ASDFASDAFSDFAD";
-
-
-fuck.addEventListener("click", function fuckYou(){
-  console.log("fucking hell");
-})
-
-
-
 
 // edit.addEventListener("click", editItem)
 edit.addEventListener("click", function (e){
