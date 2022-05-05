@@ -36,11 +36,11 @@ let testli = document.querySelector("#testli");
 //The variables need to be changed into arrays
 // let removes = document.querySelectorAll("button.delete");
 let removes = document.querySelectorAll("button.delete");
-let edit = document.querySelector("button.edit"); 
+let edits = document.querySelectorAll("button.edit"); 
 
-let editforms = document.querySelector("input.editForm");
-let enters = document.querySelector("button.enter");
-let cancels = document.querySelector("button.cancel");
+let editforms = document.querySelectorAll("input.editForm");
+let enters = document.querySelectorAll("button.enter");
+let cancels = document.querySelectorAll("button.cancel");
 
 let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beers", "Lift some weights or something"]
 let tasksFinished = [];
@@ -128,11 +128,11 @@ let deleteItem = (e) => {
 
 
 /*Edit Item*/
-let editItem = (e) =>{
+let editItem = (i) =>{
   console.log("You clicked on the edit button!");
-  editforms.classList.remove('hidden');
-  enters.classList.remove('hidden');
-  cancels.classList.remove('hidden');
+  editforms[i].classList.remove('hidden');
+  enters[i].classList.remove('hidden');
+  cancels[i].classList.remove('hidden');
 }
 
 
@@ -147,11 +147,13 @@ for (let i = 0; i < removes.length; i++){
 removes[i].addEventListener("click", function (e){
   deleteItem(e);
 });
+
+// edit.addEventListener("click", editItem)
+edits[i].addEventListener("click", function (e){
+  editItem(i);
+});
+
+
 }
 
 testli.innerHTML = "ASDFASDAFSDFAD";
-
-// edit.addEventListener("click", editItem)
-edit.addEventListener("click", function (e){
-  editItem(e);
-})
