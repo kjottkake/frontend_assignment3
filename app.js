@@ -149,6 +149,17 @@ let deleteItem = (e) => {
 }
 
 
+let getFormValue = (e) =>{
+  //specifiy form number
+  let listItem = e.target.parentNode;
+  let text = listItem.querySelector('p');
+  //get the value
+  return text; 
+  //display value
+
+  //return value
+}
+
 /*Edit Item*/
 let editItem = (i, e) =>{
   console.log("You clicked on the edit button!");
@@ -157,14 +168,24 @@ let editItem = (i, e) =>{
   cancels[i].classList.remove('hidden');
 
   //need to get information from form
-  let updateItem = editforms[i].value;
   //need to update dom to reflect it.
   console.log("This event's parentNode is: " + e.target.parentNode);
   let listItem = e.target.parentNode;
-  listItem.querySelector('p').innerHTML = updateItem;
-  
+  // listItem.querySelector('label').innerHTML = updateItem;
+  // let updateItem = editforms[i].value;
   // e.target.parentNode.input.innerHTML = "TEXT CHANGED!";
+
+
+  //select label value
+  let labelValue = listItem.querySelector('label').innerHTML;
+  //set form value;
+  editforms[i].value = labelValue;
+  //update label value;
 }
+
+
+
+
 
 
 /* Calls on eventListener for click event */
@@ -181,6 +202,7 @@ removes[i].addEventListener("click", function (e){
 
 // edit.addEventListener("click", editItem)
 edits[i].addEventListener("click", function (e){
+  getFormValue(e);
   editItem(i, e);
 });
 
