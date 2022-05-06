@@ -150,11 +150,20 @@ let deleteItem = (e) => {
 
 
 /*Edit Item*/
-let editItem = (i) =>{
+let editItem = (i, e) =>{
   console.log("You clicked on the edit button!");
   editforms[i].classList.remove('hidden');
   enters[i].classList.remove('hidden');
   cancels[i].classList.remove('hidden');
+
+  //need to get information from form
+  let updateItem = editforms[i].value;
+  //need to update dom to reflect it.
+  console.log("This event's parentNode is: " + e.target.parentNode);
+  let listItem = e.target.parentNode;
+  listItem.querySelector('p').innerHTML = updateItem;
+  
+  // e.target.parentNode.input.innerHTML = "TEXT CHANGED!";
 }
 
 
@@ -172,7 +181,7 @@ removes[i].addEventListener("click", function (e){
 
 // edit.addEventListener("click", editItem)
 edits[i].addEventListener("click", function (e){
-  editItem(i);
+  editItem(i, e);
 });
 
 
