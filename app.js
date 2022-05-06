@@ -66,6 +66,11 @@ let addTask = () => {
   const button = document.createElement("button");
   const deleteButton = document.createElement("button");
 
+  //creat hidden edit section
+  const editForm = document.createElement("form");
+  const editConfirm = document.createElement("button");
+  const editCancel = document.createElement("button");
+
   //sets element attributes
   checkBox.type = "checkBox";
   button.innerText = "Edit";
@@ -73,11 +78,20 @@ let addTask = () => {
   deleteButton.innerText = "Delete";
   deleteButton.className = "delete";
 
+  editForm.className = "editForm hidden";
+  editConfirm.className = "enter hidden";
+  editCancel.className = "cancel hidden"; 
+
+
   //append or add items to preexisting element
   newLi.appendChild(checkBox);
   newLi.appendChild(newLiContent);
   newLi.appendChild(button);
   newLi.appendChild(deleteButton);
+
+  newLi.appendChild(editForm);
+  newLi.appendChild(editConfirm);
+  newLi.appendChild(editCancel);
 
   //selects element you are adding to
   const currentDiv = document.getElementById("ulthingie");
