@@ -4,6 +4,10 @@
     [x]Create Buttons Elements
       [x]Edit button
       [x]Delete button
+        []Hidden Section
+          []Form field
+          []Cancel
+          []Enter
     [x]Add new text
     []add button functionality
       []Delete
@@ -12,7 +16,7 @@
     [x]Add
     []Delete
     []Edit
-  []Delete Items
+  [x]Delete Items
     [x]Delete 1 item
   []Update/Edit Items
       []Enter
@@ -44,6 +48,8 @@ let cancels = document.querySelectorAll("button.cancel");
 
 let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beers", "Lift some weights or something"]
 let tasksFinished = [];
+
+let listCount = 5;
 
 /* Adds task to array function */
 let addTask = () => {
@@ -80,6 +86,7 @@ let addTask = () => {
   // populateList(tasks);
 
   //resets form field to empty
+  listCount = listCount + 1;
   data.value = '';
 }
 
@@ -123,6 +130,7 @@ let deleteItem = (e) => {
   let target = e.target;
   listItem  = target.parentNode;
   listItem.remove();
+  listCount = listCount - 1;
   return 0;
 }
 
@@ -143,7 +151,7 @@ form.addEventListener("click", addTask)
 // for (const remove of removes) {
 //   remove.addEventListener("click", deleteItem(e))
 // }
-for (let i = 0; i < removes.length; i++){
+for (let i = 0; i < listCount; i++){
 removes[i].addEventListener("click", function (e){
   deleteItem(e);
 });
