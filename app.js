@@ -52,54 +52,56 @@ let listCount = 5;
 /*Implementation of task II. 1. 
 Adds new task and it's html elements. */
 let addTask = () => {
-  //getting value from data
-  let newTask = data.value;
-  tasks.push(newTask);
-  console.log(tasks);
-  //creating html elements
-  const newLi = document.createElement("li");
-  const newLiContent = document.createTextNode(newTask);
-  const checkBox = document.createElement("input");
+    if (window.confirm("Do  you really want to add this task?")) { //implementation of II.1.a and II.1.b
+    //getting value from data
+    let newTask = data.value;
+    tasks.push(newTask);
+    console.log(tasks);
+    //creating html elements
+    const newLi = document.createElement("li");
+    const newLiContent = document.createTextNode(newTask);
+    const checkBox = document.createElement("input");
 
-  //creating new button
-  const button = document.createElement("button");
-  const deleteButton = document.createElement("button");
+    //creating new button
+    const button = document.createElement("button");
+    const deleteButton = document.createElement("button");
 
-  //create hidden edit section
-  const editForm = document.createElement("form");
-  const editConfirm = document.createElement("button");
-  const editCancel = document.createElement("button");
+    //create hidden edit section
+    const editForm = document.createElement("form");
+    const editConfirm = document.createElement("button");
+    const editCancel = document.createElement("button");
 
-  //sets element attributes
-  checkBox.type = "checkBox";
-  button.innerText = "Edit";
-  button.className = "edit";
-  deleteButton.innerText = "Delete";
-  deleteButton.className = "delete";
-  editForm.className = "editForm hidden";
-  editConfirm.className = "enter hidden";
-  editCancel.className = "cancel hidden";
+    //sets element attributes
+    checkBox.type = "checkBox";
+    button.innerText = "Edit";
+    button.className = "edit";
+    deleteButton.innerText = "Delete";
+    deleteButton.className = "delete";
+    editForm.className = "editForm hidden";
+    editConfirm.className = "enter hidden";
+    editCancel.className = "cancel hidden";
 
-  //append or add items to preexisting element
-  newLi.appendChild(checkBox);
-  newLi.appendChild(newLiContent);
-  newLi.appendChild(button);
-  newLi.appendChild(deleteButton);
+    //append or add items to preexisting element
+    newLi.appendChild(checkBox);
+    newLi.appendChild(newLiContent);
+    newLi.appendChild(button);
+    newLi.appendChild(deleteButton);
 
-  newLi.appendChild(editForm);
-  newLi.appendChild(editConfirm);
-  newLi.appendChild(editCancel);
+    newLi.appendChild(editForm);
+    newLi.appendChild(editConfirm);
+    newLi.appendChild(editCancel);
 
-  //selects element you are adding to
-  const currentDiv = document.getElementById("ulthingie");
-  //adds element
-  currentDiv.append(newLi);
+    //selects element you are adding to
+    const currentDiv = document.getElementById("ulthingie");
+    //adds element
+    currentDiv.append(newLi);
 
-  //resets form field to empty
-  listCount = listCount + 1;
-  data.value = '';
-  //calls on function which binds all new buttons created with functions
-  bindNewElement();
+    //resets form field to empty
+    listCount = listCount + 1;
+    data.value = '';
+    //calls on function which binds all new buttons created with functions
+    bindNewElement();
+  }
 }
 
 let bindNewElement = () => {
@@ -127,7 +129,7 @@ let bindNewElement = () => {
 Implementation of task: I.1.
 Delete item */
 let deleteItem = (e) => {
-  if (window.confirm("Do  you really want to delete this task?")) {
+  if (window.confirm("Do  you really want to delete this task?")) { //implementation of I.1.a. confirmation of deletion
   console.log("You clicked on the delete button!");
   console.log("e.target: " + e.target); //where is it being clicked?
   //when the button is clicked, then the element is removed from the screen...and eventually the array
@@ -136,7 +138,6 @@ let deleteItem = (e) => {
   listItem.remove();
   listCount = listCount - 1;
   }
-  // return 0;
 }
 
 //this is a test function for getting the target
@@ -151,7 +152,7 @@ let getFormValue = (e) => {
   //return value
 }
 
-/*Edit Item*/
+/*Implementation of task: I.2. User is able to enter new information on edit*/
 let editItem = (i, e) => {
   console.log("You clicked on the edit button!");
   editforms[i].classList.remove('hidden');
@@ -162,9 +163,6 @@ let editItem = (i, e) => {
   //need to update dom to reflect it.
   console.log("This event's parentNode is: " + e.target.parentNode);
   let listItem = e.target.parentNode;
-  // listItem.querySelector('label').innerHTML = updateItem;
-  // let updateItem = editforms[i].value;
-  // e.target.parentNode.input.innerHTML = "TEXT CHANGED!";
 
   //select label value
   let labelValue = listItem.querySelector('label').innerHTML;
