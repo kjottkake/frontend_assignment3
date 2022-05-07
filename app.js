@@ -1,13 +1,13 @@
 /*TODO: 
   [x]How to use foreach
-  []Add new elements to html using javascript
+  [x]Add new elements to html using javascript
     [x]Create Buttons Elements
       [x]Edit button
       [x]Delete button
-        []Hidden Section
-          []Form field
-          []Cancel
-          []Enter
+        [x]Hidden Section
+          [x]Form field
+          [x]Cancel
+          [x]Enter
     [x]Add new text
   []Array functionalities
     [x]Add
@@ -16,6 +16,7 @@
   [x]Delete Items
     [x]Delete 1 item
     [x]Delete all items
+    []Confirm
   []Update/Edit Items
       []Enter
         []Confirm
@@ -27,43 +28,44 @@
     [x]Clears field
 */
 
-
-/*Selects various dom elements*/
+/*Selects various elements of the html page, form for adding new item button, 
+data for the text of the new todo item*/
 let form = document.querySelector("#addItem");
 let data = document.querySelector("#task");
-let testli = document.querySelector("#testli");
 
-//The variables need to be changed into arrays
-// let removes = document.querySelectorAll("button.delete");
-// let removes = document.querySelectorAll("button.delete");
-// let edits = document.querySelectorAll("button.edit"); 
-
+//need to move these to inside of loop
 let editforms = document.querySelectorAll("input.editForm");
 let enters = document.querySelectorAll("button.enter");
 let cancels = document.querySelectorAll("button.cancel");
 
+/*
+Here I've created an array, although it is not implemented further, the idea for later
+versions is that the array would be able to support more dynamic data formats.
+*/
 let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beers", "Lift some weights or something"]
-let tasksFinished = [];
+let tasksFinished = []; //taskFinished was never implemented.
 
+//the listCount starts off at 5 because there are 5 preexisting items in the list at the start
 let listCount = 5;
 
 
-/* Adds task to array function */
+/*Implementation of task II. 1. 
+Adds new task and it's html elements. */
 let addTask = () => {
   //getting value from data
   let newTask = data.value;
   tasks.push(newTask);
   console.log(tasks);
-
   //creating html elements
   const newLi = document.createElement("li");
   const newLiContent = document.createTextNode(newTask);
   const checkBox = document.createElement("input");
+
   //creating new button
   const button = document.createElement("button");
   const deleteButton = document.createElement("button");
 
-  //creat hidden edit section
+  //create hidden edit section
   const editForm = document.createElement("form");
   const editConfirm = document.createElement("button");
   const editCancel = document.createElement("button");
@@ -74,11 +76,9 @@ let addTask = () => {
   button.className = "edit";
   deleteButton.innerText = "Delete";
   deleteButton.className = "delete";
-
   editForm.className = "editForm hidden";
   editConfirm.className = "enter hidden";
   editCancel.className = "cancel hidden";
-
 
   //append or add items to preexisting element
   newLi.appendChild(checkBox);
@@ -94,12 +94,11 @@ let addTask = () => {
   const currentDiv = document.getElementById("ulthingie");
   //adds element
   currentDiv.append(newLi);
-  // populateList(tasks);
 
   //resets form field to empty
   listCount = listCount + 1;
   data.value = '';
-  // getRemoves();
+  //calls on function which binds all new buttons created with functions
   bindNewElement();
 }
 
@@ -111,22 +110,24 @@ let bindNewElement = () => {
     });
   }
 
-    /*Delete item */
-  let deleteItem = (e) => {
-    console.log("You clicked on the delete button!");
-    console.log("e.target: " + e.target); //where is it being clicked?
-    //when the button is clicked, then the element is removed from the screen...and eventually the array
-    let target = e.target;
-    listItem = target.parentNode;
-    listItem.remove();
-    listCount = listCount - 1;
-    return 0;
-  }
-
+  /*Delete item */
+  // let deleteItem = (e) => {
+  //   console.log("You clicked on the delete button!");
+  //   console.log("e.target: " + e.target); //where is it being clicked?
+  //   //when the button is clicked, then the element is removed from the screen...and eventually the array
+  //   let target = e.target;
+  //   listItem = target.parentNode;
+  //   listItem.remove();
+  //   listCount = listCount - 1;
+  //   return 0;
+  // }
 }
 
-/*Delete item */
+/*
+Implementation of task: I.1.
+Delete item */
 let deleteItem = (e) => {
+  if (window.confirm("Do  you really want to delete this task?")) {
   console.log("You clicked on the delete button!");
   console.log("e.target: " + e.target); //where is it being clicked?
   //when the button is clicked, then the element is removed from the screen...and eventually the array
@@ -134,7 +135,8 @@ let deleteItem = (e) => {
   listItem = target.parentNode;
   listItem.remove();
   listCount = listCount - 1;
-  return 0;
+  }
+  // return 0;
 }
 
 //this is a test function for getting the target
@@ -164,7 +166,6 @@ let editItem = (i, e) => {
   // let updateItem = editforms[i].value;
   // e.target.parentNode.input.innerHTML = "TEXT CHANGED!";
 
-
   //select label value
   let labelValue = listItem.querySelector('label').innerHTML;
   //set form value;
@@ -182,15 +183,16 @@ let edits = document.querySelectorAll("button.edit");
 
 for (let i = 0; i < listCount; i++) {
   removes[i].addEventListener("click", function (e) {
+    // bindNewElement();
     deleteItem(e);
   });
 
   // edit.addEventListener("click", editItem)
   edits[i].addEventListener("click", function (e) {
+    // bindNewElement();
     getFormValue(e);
     editItem(i, e);
   });
 }
 
 
-testli.innerHTML = "ASDFASDAFSDFAD";
