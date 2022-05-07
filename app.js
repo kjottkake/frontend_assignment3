@@ -9,15 +9,13 @@
           []Cancel
           []Enter
     [x]Add new text
-    []add button functionality
-      []Delete
-      []Edit
   []Array functionalities
     [x]Add
     []Delete
     []Edit
   [x]Delete Items
     [x]Delete 1 item
+    [x]Delete all items
   []Update/Edit Items
       []Enter
         []Confirm
@@ -35,17 +33,10 @@ let form = document.querySelector("#addItem");
 let data = document.querySelector("#task");
 let testli = document.querySelector("#testli");
 
-//why do these not fucking work?
-
 //The variables need to be changed into arrays
 // let removes = document.querySelectorAll("button.delete");
 // let removes = document.querySelectorAll("button.delete");
 // let edits = document.querySelectorAll("button.edit"); 
-
-
-//testing selecting lis
-let lists = document.querySelectorAll("li");
-
 
 let editforms = document.querySelectorAll("input.editForm");
 let enters = document.querySelectorAll("button.enter");
@@ -109,24 +100,29 @@ let addTask = () => {
   listCount = listCount + 1;
   data.value = '';
   // getRemoves();
-  listCounter();
-  deleteCounter();
+  bindNewElement();
 }
 
-//tests count for redefinition of selected dom stuff
-let listCounter = () => {
-  let listCount = document.querySelectorAll("li");
-  return listCount;
-}
-
-let deleteCounter = () => {
+let bindNewElement = () => {
   let deleteCount = document.querySelectorAll("button.delete");
   for (let i = 0; i < listCount; i++) {
     deleteCount[i].addEventListener("click", function (e) {
       deleteItem(e);
     });
   }
-  return deleteCount;
+
+    /*Delete item */
+  let deleteItem = (e) => {
+    console.log("You clicked on the delete button!");
+    console.log("e.target: " + e.target); //where is it being clicked?
+    //when the button is clicked, then the element is removed from the screen...and eventually the array
+    let target = e.target;
+    listItem = target.parentNode;
+    listItem.remove();
+    listCount = listCount - 1;
+    return 0;
+  }
+
 }
 
 /*Delete item */
@@ -141,6 +137,7 @@ let deleteItem = (e) => {
   return 0;
 }
 
+//this is a test function for getting the target
 let getFormValue = (e) => {
   //specifiy form number
   let listItem = e.target.parentNode;
@@ -182,9 +179,6 @@ form.addEventListener("click", addTask)
 
 let removes = document.querySelectorAll("button.delete");
 let edits = document.querySelectorAll("button.edit");
-
-
-
 
 for (let i = 0; i < listCount; i++) {
   removes[i].addEventListener("click", function (e) {
