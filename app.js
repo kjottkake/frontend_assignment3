@@ -39,9 +39,12 @@ let testli = document.querySelector("#testli");
 
 //The variables need to be changed into arrays
 // let removes = document.querySelectorAll("button.delete");
-let removes = document.querySelectorAll("button.delete");
-let edits = document.querySelectorAll("button.edit"); 
+// let removes = document.querySelectorAll("button.delete");
+// let edits = document.querySelectorAll("button.edit"); 
 
+
+//testing selecting lis
+let lists = document.querySelectorAll("li");
 let editforms = document.querySelectorAll("input.editForm");
 let enters = document.querySelectorAll("button.enter");
 let cancels = document.querySelectorAll("button.cancel");
@@ -50,6 +53,8 @@ let tasks = ["Walk Cat", "Walk Dog", "Walk Emu", "Talk to Emu", "Drink some beer
 let tasksFinished = [];
 
 let listCount = 5;
+
+
 
 /* Adds task to array function */
 let addTask = () => {
@@ -102,6 +107,14 @@ let addTask = () => {
   //resets form field to empty
   listCount = listCount + 1;
   data.value = '';
+  // getRemoves();
+  listCounter();
+}
+
+//tests count for redefinition of selected dom stuff
+let listCounter = () =>{
+  let listCount = document.querySelectorAll("li");
+  return listCount;
 }
 
 //Creates elements from array
@@ -139,7 +152,7 @@ let addTask = () => {
 /*Delete item */
 let deleteItem = (e) => {
   console.log("You clicked on the delete button!");
-  console.log("e.target: " + e.target);
+  console.log("e.target: " + e.target); //where is it being clicked?
   //when the button is clicked, then the element is removed from the screen...and eventually the array
   let target = e.target;
   listItem  = target.parentNode;
@@ -185,9 +198,6 @@ let editItem = (i, e) =>{
 
 
 
-
-
-
 /* Calls on eventListener for click event */
 form.addEventListener("click", addTask)
 
@@ -195,7 +205,18 @@ form.addEventListener("click", addTask)
 // for (const remove of removes) {
 //   remove.addEventListener("click", deleteItem(e))
 // }
+
+let removes = document.querySelectorAll("button.delete");
+let edits = document.querySelectorAll("button.edit"); 
+
+let getRemoves = () =>{
+  let removes = document.querySelectorAll("button.delete");
+  return removes;
+}
+
 for (let i = 0; i < listCount; i++){
+  // getRemoves();
+// let removes = document.querySelectorAll("button.delete");
 removes[i].addEventListener("click", function (e){
   deleteItem(e);
 });
@@ -205,8 +226,7 @@ edits[i].addEventListener("click", function (e){
   getFormValue(e);
   editItem(i, e);
 });
-
-
 }
+
 
 testli.innerHTML = "ASDFASDAFSDFAD";
