@@ -1,18 +1,4 @@
 /*TODO: 
-  [x]How to use foreach
-  [x]Add new elements to html using javascript
-    [x]Create Buttons Elements
-      [x]Edit button
-      [x]Delete button
-        [x]Hidden Section
-          [x]Form field
-          [x]Cancel
-          [x]Enter
-    [x]Add new text
-  [x]Delete Items
-    [x]Delete 1 item
-    [x]Delete all items
-    [x]Confirm
   []Update/Edit Items
       []Enter
         []Confirm
@@ -93,14 +79,19 @@ let addTask = () => {
     //adds element
     currentDiv.append(newLi);
 
-    //resets form field to empty
+    //adds 1 to listCount to keep track of how many items are in the list
     listCount = listCount + 1;
+    //resets form field to empty on submit
     data.value = '';
     //calls on function which binds all new buttons created with functions
     bindNewElement();
   }
+  //If user click's on cancel for prompt then it exits and doesn't add item.
 }
 
+/*This function is necessary as it connects the preexisting functions with the newly created
+buttons. This is possible as deleteCount is defined and updated, and an event listner is
+called for each deleteCount element.*/
 let bindNewElement = () => {
   let deleteCount = document.querySelectorAll("button.delete");
   for (let i = 0; i < listCount; i++) {
@@ -156,8 +147,7 @@ let editItem = (i, e) => {
   enters[i].classList.remove('hidden');
   cancels[i].classList.remove('hidden');
 
-  //need to get information from form
-  //need to update dom to reflect it.
+  //targets item that is clicked on.
   console.log("This event's parentNode is: " + e.target.parentNode);
   let listItem = e.target.parentNode;
 
@@ -169,8 +159,7 @@ let editItem = (i, e) => {
 }
 
 
-
-/* Calls on eventListener for click event */
+/* Event listener for clicking on adding item*/
 form.addEventListener("click", addTask)
 
 let removes = document.querySelectorAll("button.delete");
