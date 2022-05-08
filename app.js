@@ -1,16 +1,3 @@
-/*TODO: 
-  []Update/Edit Items
-      []Enter
-        []Confirm
-      []Cancel
-        []Confirm
-  []Add Item
-    [x]Adds item
-    []Add on enter
-    [x]Clears field
-    [x]Confirmation
-*/
-
 /*Selects various elements of the html page, form for adding new item button, 
 data for the text of the new todo item*/
 let form = document.querySelector("#addItem");
@@ -99,18 +86,6 @@ let bindNewElement = () => {
       deleteItem(e);
     });
   }
-
-  /*Delete item */
-  // let deleteItem = (e) => {
-  //   console.log("You clicked on the delete button!");
-  //   console.log("e.target: " + e.target); //where is it being clicked?
-  //   //when the button is clicked, then the element is removed from the screen...and eventually the array
-  //   let target = e.target;
-  //   listItem = target.parentNode;
-  //   listItem.remove();
-  //   listCount = listCount - 1;
-  //   return 0;
-  // }
 }
 
 /*
@@ -126,18 +101,6 @@ let deleteItem = (e) => {
   listItem.remove();
   listCount = listCount - 1;
   }
-}
-
-//this is a test function for getting the target
-let getFormValue = (e) => {
-  //specifiy form number
-  let listItem = e.target.parentNode;
-  let text = listItem.querySelector('p');
-  //get the value
-  return text;
-  //display value
-
-  //return value
 }
 
 /*Implementation of task: I.2. User is able to enter new information on edit*/
@@ -156,6 +119,17 @@ let editItem = (i, e) => {
   //set form value;
   editforms[i].value = labelValue;
   //update label value;
+  let newValue = editforms[i].value;
+  enters[i].addEventListener("click", function(){
+    console.log("YOU clicked on enter!");
+    labelValue.innerHTML = newValue;
+  })
+  //Implementation of task I.2.b. Canceling feature for edit
+  cancels[i].addEventListener("click", function(){
+    editforms[i].classList.add('hidden');
+    enters[i].classList.add('hidden');
+    cancels[i].classList.add('hidden');
+  })
 }
 
 
@@ -174,7 +148,6 @@ for (let i = 0; i < listCount; i++) {
   // edit.addEventListener("click", editItem)
   edits[i].addEventListener("click", function (e) {
     // bindNewElement();
-    getFormValue(e);
     editItem(i, e);
   });
 }
