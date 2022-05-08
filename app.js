@@ -9,14 +9,10 @@
           [x]Cancel
           [x]Enter
     [x]Add new text
-  []Array functionalities
-    [x]Add
-    []Delete
-    []Edit
   [x]Delete Items
     [x]Delete 1 item
     [x]Delete all items
-    []Confirm
+    [x]Confirm
   []Update/Edit Items
       []Enter
         []Confirm
@@ -26,6 +22,7 @@
     [x]Adds item
     []Add on enter
     [x]Clears field
+    [x]Confirmation
 */
 
 /*Selects various elements of the html page, form for adding new item button, 
